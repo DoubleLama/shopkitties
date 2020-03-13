@@ -1,0 +1,16 @@
+<h2>Renvoyer l'instruction de déverrouillage</h2>
+
+<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :Adresse_de_mail %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Renvoyer l'instruction de déverrouillage" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

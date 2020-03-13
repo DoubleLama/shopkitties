@@ -1,0 +1,28 @@
+<br>
+<div class="row">
+<div class="col-md-5">
+</div>
+<div class="coll-md-3">
+<h2>Mot de passe oublié ?</h2>
+
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <br>
+
+  <div class="actions" style="margin-left:20px; margin-bottom:10px">
+    <%= f.submit "Envoyer-moi un mail" %>
+
+  </div>
+<% end %>
+<%= render "devise/shared/links" %>
+
+
+</div>
+</div>
+<br>

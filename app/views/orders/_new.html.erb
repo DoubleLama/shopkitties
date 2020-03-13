@@ -1,0 +1,19 @@
+<div class="container text-center mb-5 mt-5">
+  <%= form_tag cart_orders_path(params[:id]) do %>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Nouvelle commande"
+            data-email=<%=current_user.email%>
+            data-amount="<%=(@amount*100)%>"
+            data-currency= 'eur',
+            data-locale="auto"></script>
+</div>
+<% end %>

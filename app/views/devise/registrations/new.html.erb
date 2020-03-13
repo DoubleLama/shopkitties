@@ -1,0 +1,49 @@
+<br>
+<br>
+
+<div class="row">
+
+
+  <div class="col-md-4 offset-5" style="height = 700px">
+    <h2>Inscription</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+      <br>
+      <%= f.email_field :email, autofocus: true, placeholder: ' Adresse email  ', autocomplete: "email" %>
+      </div>
+
+
+      <div class="field">
+        
+        <% if @minimum_password_length %>
+        <% end %><br />
+        <%= f.password_field :password, placeholder: 'Mot de passe', autocomplete: "new-password" %>
+      </div>
+        <em>(<%= @minimum_password_length %> caractères minimums)</em>
+
+      <div class="field">
+        
+        <%= f.password_field :password_confirmation, placeholder: 'Confirmer mot de passe', autocomplete: "new-password" %>
+      </div>
+
+      <br>
+      <div class="row">
+      <br>  
+        <div class="actions" style="margin-right:30px; margin-left:20px">
+          <button type="submit" class="btn btn-success">S'inscrire</button>
+        </div>    
+        <% end %>
+      </div>
+
+        <div class="m-1 row">
+        <%= render "devise/shared/links" %>
+        </div>
+     
+  </div>
+
+</div>
+<br>
+<br>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+
+  </head>
+  <body>
+    <h1> Confirmation de votre commande </h1>
+    <p>  Ceci est un email pour confirmer ta commande sur Shopkitties.fr ! </p>
+   <h3>Voici les photos commandées : </h3>
+
+   <% OrderItem.all.each do |order_item| %>
+    <ul>
+      <% if order_item.order_id == @order_id %>
+        <li><a href="<%= order_item.item.image_url %>"><%= order_item.item.title %></a></li>
+      <% end %>
+    </ul>
+<% end %>
+
+    <p>
+     Pour accéder à ton espace client, connecte-toi via : <a href="www.localhost:3000/sign_in">www.localhost:3000/sign_in</a>
+   </p>
+   <p> Merci de votre confiance, à très vite sur shopkitties.fr ! </p>
+  </body>
+</html>

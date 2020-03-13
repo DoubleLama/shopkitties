@@ -1,0 +1,42 @@
+<div class="container mt-5 form-group">
+
+    <div class= "bg-light container fieldset mt-3 mr3 pt-3 fieldset col-lg-4 ">
+    
+        <h1 class="text-center">Modifier vos informations</h1>
+        <p class="border-bottom">
+        
+      
+        <%= form_for @user do |f| %>
+        
+            <%= f.text_field :first_name, class: "form-control", placeholder: "Prénom" %>
+            
+            <br>
+
+             <%= f.text_field :last_name, class: "form-control", placeholder: "Nom"  %>
+
+            <br>
+
+             <%= f.text_area :description, class: "form-control", placeholder: "Description"  %>
+            
+            <br>
+              
+            <div class="form-group text-center">
+
+                <button type="submit" class=" float-right btn btn-success">Appliquer</button>
+
+           </div>
+
+         <% end %>
+
+        <h3>Changer d'avatar ?</h3>
+
+            <%= form_tag user_avatars_path(@user), multipart: true do %>
+
+            <%= file_field_tag :avatar %>
+
+            <%= submit_tag "mettre à jour" %>
+            
+        <% end %>
+
+    </div>
+</div>

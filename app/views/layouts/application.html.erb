@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shop Kitties</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://kit.fontawesome.com/f1d8fe4e09.js" crossorigin="anonymous"></script>
+
+  </head>
+
+  <body>
+    <%= render 'layouts/jumbotron' %>
+
+    <%= render 'layouts/navbar' %>
+
+    <%= yield %>
+
+    <%= render 'layouts/footer' %>
+
+  </body>
+</html>

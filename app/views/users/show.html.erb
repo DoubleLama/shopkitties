@@ -1,0 +1,45 @@
+<div class="container mt-5 mb-5 offset-2">
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mt-5">
+        <h3 class="card-header">Mes informations</h3>
+        <div class="card-body">
+          <h5 class="card-title">Pseudo : </h5>
+          <h5 class="card-title">Email : <%= current_user.email %></h5>
+        </div>
+
+        <div>
+        <%= button_to "Modifier email/mot de passe", edit_user_registration_path, class: 'btn btn-warning mb-3 ml-3', method: 'get' %>
+        </div>
+
+        <div class="card-footer text-muted text-center">
+          Merci de nous faire la confiance!!
+        </div>
+      </div>
+  	</div>
+
+    <div class="col-md-6">
+      <h3 class="text-center">Mes commandes</h3>
+
+        <% @orders.each do |order| %>
+        <div class="card mb-3">
+          <h5 class="card-header">Commande n° : <%= order.id %></h5>
+
+        <% total = 0 %>
+            <h5 class="ml-2"><u>Produits :</u> </h5>
+          <% @order_items.each do |order_item| %>
+            <div>
+              <% if order_item.order_id == order.id %>
+                <p class="ml-4"> <%= order_item.item.title %></p>
+                <% total = total + order_item.item.price  %>
+              <% end %>
+            </div>
+              <% end %>
+              <h5 class="text-right mr-3">Prix total : <%= total  %> €</h5>
+          </div>
+          <%end%>
+  	  </div>
+
+  </div>
+</div>

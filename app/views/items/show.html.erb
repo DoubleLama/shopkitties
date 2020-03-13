@@ -1,0 +1,36 @@
+<div class="container m-5">
+    <div class="row">
+        <div class="col-lg-5 col-md-12 m-auto">
+          <%if @item.cat_picture.attached?%>
+              <%= image_tag @item.cat_picture, alt: 'cat_picture', class:"img-thumbnail" %>
+            <%else%>
+              <p>=== Il n'y a pas encore d'image ===</p>
+            <%end%>
+        </div>
+        <div class="bg-light col-lg-5 col-md-12 border p-5" style="line-height:3em">
+            <h1 class="text-center"> <%= @item.title %></h1>
+            <br>
+
+            <p> <%= @item.description %></p>
+            <div class="text-center font-weight-bold">
+            <p><u> Prix : <%= @item.price%> €</u></p>
+            <% if user_signed_in? %>
+              <%= link_to 'Ajouter au panier', item_cart_items_path(params[:id]), class:"btn btn-lg btn-primary align-bottom", method: 'post' %>
+              <br><br>
+                <% if current_user.email == "shopkitties@yopmail.com" %>
+                <h6>Uploader/Changer l'image ?</h6>
+                  <%= form_tag item_cat_pictures_path(@item), multipart: true do %>
+                    <%= file_field_tag :cat_picture %>
+                    <%= submit_tag "mettre à jour" %>
+                  <% end %>
+                <% else end %>
+              <% else %>
+              <p>Vous devez avoir un compte pour ajouter des articles à votre panier ! </p>
+              <%= link_to 'Se connecter', new_user_session_path, class: "btn btn-lg btn-secondary align-bottom" %>
+              <%= link_to 'S\'inscrire', new_user_registration_path, class: "btn btn-lg btn-secondary align-bottom"%>
+              </div>
+              <% end %>
+        </div>
+        </div>
+    </div>
+</div>
